@@ -1,7 +1,8 @@
 const server = `http://localhost:5000/api/surveys`
-const serverTwo ='api/surveys'
+const serverTwo ='/api/surveys'
 export async function getSurvey (id) {
  
+
     const response = await fetch(`${serverTwo}/${id}`,{
       headers: {
         Accept: 'application/json',
