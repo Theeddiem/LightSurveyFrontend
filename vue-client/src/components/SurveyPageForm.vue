@@ -69,9 +69,13 @@ export default {
     }, //
 
     async loadData () {
+      console.log("t1", this.$store.state.currentSurvey);
+      
       this.$store.state.currentSurvey = await getSurvey(this.id)
-      this.options = this.$store.state.currentSurvey.options
-      this.question = this.$store.state.currentSurvey.question
+      console.log("t2", this.$store.state.currentSurvey);
+      
+       this.options = this.$store.state.currentSurvey.options
+       this.question = this.$store.state.currentSurvey.question
 
       let totalVotes = 0
 
@@ -85,6 +89,8 @@ export default {
 
   created: async function () {
     this.loadData()
+    console.log("hi");
+    
   }
 }
 </script>
