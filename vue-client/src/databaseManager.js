@@ -1,5 +1,5 @@
-const serverTwo = `http://localhost:5000/api/surveys`
-const server ='api/surveys'
+const server = `http://localhost:5000/api/surveys`
+const serverTwo ='api/surveys'
 export async function getSurvey (id) {
  
     const response = await fetch(`${serverTwo}/${id}`,{
