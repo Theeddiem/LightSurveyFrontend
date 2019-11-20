@@ -1,5 +1,3 @@
-
-const Joi = require('@hapi/joi');
 const mongoose = require('mongoose')
 
 const SurveySchema = new mongoose.Schema({

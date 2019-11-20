@@ -2,7 +2,6 @@ const express = require('express')
 const mongoose = require('mongoose')
 const surveys = require('./routes/surveys')
 const history = require("connect-history-api-fallback");
-const serveStatic = require("serve-static");
 var cors = require('cors')
 const path = require('path')
 

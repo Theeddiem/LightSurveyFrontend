@@ -1,8 +1,9 @@
 const server = `http://localhost:5000/api/surveys`
+const serverTwo = 'api/surveys'
 
 export async function getSurvey (id) {
   try {
-    const response = await fetch(`${server}/${id}`)
+    const response = await fetch(`${serverTwo}/${id}`)
     const json = await response.json()
     return json
   } catch (error) {
@@ -13,7 +14,7 @@ export async function getSurvey (id) {
 export async function putSurvey (survey) {
   console.log(survey)
 
-  const url = `${server}/${survey.id}`
+  const url = `${serverTwo}/${survey.id}`
 
   try {
     const response = await fetch(url, {
@@ -31,7 +32,7 @@ export async function putSurvey (survey) {
 }
 
 export async function postSurvey (survey) {
-  const url = `${server}`
+  const url = `${serverTwo}`
 
   try {
     const response = await fetch(url, {
