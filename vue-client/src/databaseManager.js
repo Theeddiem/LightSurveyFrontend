@@ -1,13 +1,15 @@
 const server = `http://localhost:5000/api/surveys`
-const serverTwo = `api/surveys`
+const serverTwo = server//`api/surveys`
 export async function getSurvey (id) {
-  try {
+ 
     const response = await fetch(`${serverTwo}/${id}`)
+    console.log("this response",response);
+    
     const json = await response.json()
+    console.log("this json",json);
+    
     return json
-  } catch (error) {
-    console.log(error)
-  }
+ 
 }
 
 export async function putSurvey (survey) {
