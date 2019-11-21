@@ -13,14 +13,13 @@
 
       <input
         v-model.lazy='voterName'
-        id='input-name'
-        class='survey-answer-group'
+        class='input-group'
         type='text'
         placeholder='Enter name...'
         autofocus
       />
-      <button id='add-btn'>Add Option</button>
-      <button @click='vote' id='submit-option'>Vote</button>
+      <button class="button-group">Add Option</button>
+      <button class="button-group"  @click='vote' id='submit-option'>Vote</button>
     </div>
 </template>
 

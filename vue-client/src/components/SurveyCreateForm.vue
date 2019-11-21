@@ -1,19 +1,20 @@
 <template>
   <div class="surveyCreate-container">
        <input
-        class="survey-create-group"
+        class="input-group"
         v-model.lazy="question"
         type="text"
         placeholder="Enter Question"
       />
       <OptionInput
         @OnSetOption="setOption"
+        class="input-group"
         v-for="(option, i) in options"
         v-bind:key="i"
         :index="i"
       ></OptionInput>
-      <button class="surveyCreate-main-btn-group" @click="addOption">Add</button>
-      <button class="surveyCreate-main-btn-group" @click="submitPoll">Submit</button>
+      <button class="button-group" @click="addOption">Add</button>
+      <button class="button-group" @click="submitPoll">Submit</button>
 
   </div>
 </template>

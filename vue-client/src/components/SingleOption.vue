@@ -8,9 +8,10 @@
           :v-if="Math.random() > 0.5"
           id="myBar"
           :style="styleObject"
-        >{{styleObject.width}} &nbsp;</div>
+        >{{styleObject.width}} &nbsp;
+        </div>
       </div>
-      <input @change="onInputChange" type="checkbox" class="dynamicCheckBox" />
+      <input @change="onInputChange" type="checkbox" class="dynamicCheckBox"/>
     </div>
   </div>
 </template>
@@ -68,12 +69,25 @@ export default {
 </script>
 
 <style>
-.optionSingleDiv {
+
+.surveyPage-container {
+  grid-column: 2;
+  padding: 5%;
   display: grid;
-  grid-template-columns: 11fr 1fr;
+  background-color: #fff;
+  border-radius: 6px;
+  box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);
+}
+
+
+.optionSingleDiv {
+ 
+   display: grid;
+  grid-template-columns: 11fr 1fr; 
 }
 
 #myProgress {
+  
   text-align: center;
   grid-column: 1;
   background-color: #edf9f5;
@@ -104,6 +118,7 @@ export default {
 }
 
 .dynamicCheckBox:before {
+    grid-column: 1/-1;
   content: "";
   display: block;
   position: absolute;

@@ -41,7 +41,7 @@ body {
 }
 
 
-input {
+.input-group {
   grid-column: 1/-1;
   display: block;
   padding: 10px 40px;
@@ -58,7 +58,9 @@ input {
   /* inline and or block */
 }
 
-button {
+.button-group {
+
+
   background-color: #26be84;
   opacity: 0.9;
   color: white;
@@ -74,8 +76,8 @@ button {
   font-family: myFirstFont, Arial, Helvetica, sans-serif;
 }
 
-button:hover,
-button:active {
+.button-group:hover,
+.button-group:active {
   background-color: #1aac74;
 }
 
@@ -102,12 +104,12 @@ li a {
   display: block;
   color: rgb(0, 0, 0);
   text-align: left;
-  padding: 14px 7px;
+  padding: 15px 8px;
   text-decoration: none;
 }
 
 li a:hover {
-  background-color: red;
+  background-color: rgb(238, 251, 230);
 }
 
 
@@ -137,16 +139,10 @@ li a:hover {
 /* -----------------------------------------------------------------------------------------------------------------------------------*/
 /*surveyPage.html */
 
-.surveyPage-container {
-  padding: 5%;
-  grid-column: 2;
-  display: grid;
-  background-color: #fff;
-  border-radius: 6px;
-  box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);
-}
+
 
 #surveyPage-survey-question {
+  grid-column: 1/-1;
   font-size: 25px;
   font-family: myFirstFont, Helvetica, sans-serif;
 }
