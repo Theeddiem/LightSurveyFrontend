@@ -81,8 +81,7 @@ export default {
 
 
 .optionSingleDiv {
- 
-   display: grid;
+  display: grid;
   grid-template-columns: 11fr 1fr; 
 }
 
@@ -113,12 +112,11 @@ export default {
 }
 
 .dynamicCheckBox {
-  grid-column: 2;
+
   margin-top: 10px;
 }
 
 .dynamicCheckBox:before {
-    grid-column: 1/-1;
   content: "";
   display: block;
   position: absolute;
@@ -139,7 +137,7 @@ export default {
   -webkit-transform: rotate(45deg);
   -ms-transform: rotate(45deg);
   transform: rotate(45deg);
-  grid-column: 2;
+
   margin-left: 5px;
 }
 </style>
