@@ -18,7 +18,7 @@
 
 
 .App-container{
- 
+
   display: grid;
   grid-gap: 10%;
   grid-template-columns: 1fr 1fr 1fr;
