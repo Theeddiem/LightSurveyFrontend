@@ -11,17 +11,18 @@ export default {
 
     data: function () {
     return {
-      options : ['',''],
-      question: ''
+
     }
   },
 
     methods:{
         whatsAppLink () {
                     
-             console.log(this.$route.path);
-                    
-             window.location.href = `https://api.whatsapp.com/send?text=${ this.$store.state.currentSurvey.question}-${this.$route.path}`;
+             if(this.$store.state.currentSurvey.question === null)
+                  window.location.href = `https://api.whatsapp.com/send?text=Create Your Free Survey-${window.location.href}`;
+             else{       
+             window.location.href = `https://api.whatsapp.com/send?text=${ this.$store.state.currentSurvey.question}-${window.location.href}`;
+             }
         
         },
 
@@ -29,7 +30,7 @@ export default {
              // Create new element
             var el = document.createElement("textarea");
             // Set value (string to be copied)
-            el.value = this.$route.path;
+            el.value = window.location.href;
             // Set non-editable to avoid focus and move outside of view
             el.setAttribute("readonly", "");
             el.style = { position: "absolute", left: "-9999px" };
@@ -59,5 +60,29 @@ export default {
 .shareIcon:hover {
   cursor: pointer;
 }
+
+
+.swal-copyclipboard {
+  height: 4%;
+  width: auto;
+  font-size: 10px;
+  background-color: #26be84;
+  border-radius: 10px;
+}
+
+.swal-warning {
+  height: 4%;
+  width: auto;
+  font-size: 10px;
+  background-color: #ee467e;
+  border-radius: 10px;
+}
+
+.swal2-title {
+  color: white;
+  font-weight: 100;
+  margin: 0;
+}
+
 
 </style>
