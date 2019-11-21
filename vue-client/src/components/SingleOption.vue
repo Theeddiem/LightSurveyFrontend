@@ -1,6 +1,8 @@
 <template>
   <div>
+<modals-container/>
     <div class="optionSingleDiv">
+       <img @click="votersName" class="votersInfo" src="../assets/peopleIcon.svg"  height="20"/>
       <div id="myProgress">
         &nbsp;
         {{currentOption.optionName}} &nbsp;
@@ -13,7 +15,7 @@
       </div>
       <input @change="onInputChange" type="checkbox" class="dynamicCheckBox"/>
     </div>
-  </div>
+    </div>
 </template>
 
 <script>
@@ -22,16 +24,38 @@ export default {
 
   data: function() {
     return {
-      percentage: 0,
-      checked: false,
-
       styleObject: {
         width: "0%"
-      }
+      },
+      result : "",
+      percentage: 0,
+      checked: false,
     };
   },
 
   methods: {
+
+    votersName (){
+        const  voterNames = this.currentOption.voterNames
+        if (voterNames.length === 1) this.result = voterNames[0];
+        
+        else{
+        for (let index = 0; index < voterNames.length; index++) 
+        {
+          const element = voterNames[index];
+          if (index === voterNames.length - 1)
+            //last index
+            this.result += element + " ";
+          else {
+            this.result += element + ", ";
+          }
+        }
+     }
+
+     this.$modal.show('voterNames')
+ 
+    },
+
     onInputChange() {
       this.checked = !this.checked;
 
@@ -63,6 +87,7 @@ export default {
           refToStyleObject.width = width + "%";
         }
       }
+
     }
   }
 };
@@ -81,18 +106,24 @@ export default {
 
 
 .optionSingleDiv {
+  width: auto;
   display: grid;
-  grid-template-columns: 11fr 1fr; 
+  grid-template-rows: auto;
+  grid-template-columns: 1fr 15fr 1fr; 
+}
+
+.votersInfo{
+  grid-column: 1;
+  margin-top: 10px;
 }
 
 #myProgress {
-  
   text-align: center;
-  grid-column: 1;
+  grid-column: 2;
   background-color: #edf9f5;
-  font-size: 16px;
+  font-size: 14px;
   text-align: left;
-  margin: 5px 5px 5px 15px;
+  margin: 5px 5px 5px 5px;
   border-color: black;
   border-width: 1px;
   border-style: solid;

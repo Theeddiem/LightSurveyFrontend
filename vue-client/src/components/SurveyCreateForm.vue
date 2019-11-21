@@ -16,26 +16,56 @@
       <button class="button-group" @click="addOption">Add</button>
       <button class="button-group" @click="submitPoll">Submit</button>
 
+
+        <button
+      type="button"
+      class="btn"
+      @click="showModal"
+    >
+      Open Modal!
+    </button>
+
+    <modal
+      v-show="isModalVisible"
+      @close="closeModal"
+    />
+
   </div>
+
+  
 </template>
 
 <script>
+import modal from './Model.vue';
 import Survey from '../SurveyClass'
 import IndicatorPopup from '../utilities'
 import Swal from "sweetalert2";
 import { postSurvey } from '../databaseManager'
+import OptionInput from './OptionInput.vue'
 
 export default {
+
+    components: {OptionInput,  modal},
+
   data: function () {
     return {
       options : ['',''],
-      question: ''
+      question: '',
+          isModalVisible: false,
     }
   },
 
   methods: {
-    async submitPoll () {
+ 
+      showModal() {
+        this.isModalVisible = true;
+      },
+      closeModal() {
+        this.isModalVisible = false;
+      }    ,
 
+    async submitPoll () {
+  this.$modal.show('hello-world');
       const filterdOptions =  this.options.filter(
         word => word !== ''
       )

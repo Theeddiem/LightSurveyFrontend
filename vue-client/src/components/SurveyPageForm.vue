@@ -26,8 +26,12 @@
 <script>
 import { getSurvey, putSurvey } from '../databaseManager'
 import IndicatorPopup from '../utilities'
+import SingleOption from './SingleOption'
 
 export default {
+
+  components:{SingleOption},
+
   data: function () {
     return {
       reRender: true,
