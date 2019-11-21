@@ -21,6 +21,7 @@
 <script>
 import Survey from '../SurveyClass'
 import IndicatorPopup from '../utilities'
+import Swal from "sweetalert2";
 import { postSurvey } from '../databaseManager'
 
 export default {
@@ -39,7 +40,22 @@ export default {
       )
 
       if (this.question === '') {
-        IndicatorPopup('Enter a question first', 'warning')
+          Swal.fire({
+      title: text,
+
+      position: "top",
+      customClass: "swal-warning",
+
+      showConfirmButton: false,
+
+      showClass: {
+        popup: "animated fadeInDown faster"
+      },
+      hideClass: {
+        popup: "animated fadeOutUp faster"
+      },
+      timer: 1200
+    });
         return
       }
 
