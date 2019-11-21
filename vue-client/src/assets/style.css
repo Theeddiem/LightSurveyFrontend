@@ -42,6 +42,7 @@ body {
 
 
 input {
+  grid-column: 1/-1;
   display: block;
   padding: 10px 40px;
   text-align: center;
@@ -120,6 +121,7 @@ li a:hover {
 /* surveyCreate.html */
 
 .surveyCreate-container {
+  grid-template-columns: 1fr 1fr;
   padding: 5%;
   grid-column: 2;
   background-color: #fff;
