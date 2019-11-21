@@ -13,7 +13,7 @@
         :index="i"
       ></OptionInput>
       <button class="surveyCreate-main-btn-group" @click="addOption">Add</button>
-      <button class="surveyCreate-main-btn-group" @click="submitPoll">Submits</button>
+      <button class="surveyCreate-main-btn-group" @click="submitPoll">Submit</button>
 
   </div>
 </template>
