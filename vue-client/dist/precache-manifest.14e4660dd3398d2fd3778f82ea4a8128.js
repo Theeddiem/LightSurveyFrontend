@@ -20,7 +20,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/img/whatsAppIcon.547cd823.svg"
   },
   {
-    "revision": "4f1bd398897fbe0df856466458175d87",
+    "revision": "4352e3fc20479c5472e13ae35ade3da4",
     "url": "/index.html"
   },
   {
