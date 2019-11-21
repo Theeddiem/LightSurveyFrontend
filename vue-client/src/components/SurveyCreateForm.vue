@@ -40,22 +40,7 @@ export default {
       )
 
       if (this.question === '') {
-          Swal.fire({
-      title: text,
-
-      position: "top",
-      customClass: "swal-warning",
-
-      showConfirmButton: false,
-
-      showClass: {
-        popup: "animated fadeInDown faster"
-      },
-      hideClass: {
-        popup: "animated fadeOutUp faster"
-      },
-      timer: 1200
-    });
+        IndicatorPopup('Enter question first', 'warning')
         return
       }
 
@@ -86,25 +71,4 @@ export default {
 <style>
 
 
-.swal-copyclipboard {
-  height: 4%;
-  width: auto;
-  font-size: 10px;
-  background-color: #26be84;
-  border-radius: 10px;
-}
-
-.swal-warning {
-  height: 4%;
-  width: auto;
-  font-size: 10px;
-  background-color: #ee467e;
-  border-radius: 10px;
-}
-
-.swal2-title {
-  color: white;
-  font-weight: 100;
-  margin: 0;
-}
 </style>

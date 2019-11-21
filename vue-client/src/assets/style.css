@@ -18,6 +18,29 @@ body {
 /* -----------------------------------------------------------------------------------------------------------------------------------*/
 /* -----------------------------------------------------------------------------------------------------------------------------------*/
 
+.swal-copyclipboard {
+  height: 4% !important; 
+  width: auto !important;
+  font-size: 10px  !important;
+  background-color: #26be84  !important;
+  border-radius: 10px !important;
+}
+
+.swal-warning {
+  height: 4% !important;
+  width: auto !important;
+  font-size: 10px !important;
+  background-color: #ee467e !important ;
+  border-radius: 10px !important;
+}
+
+.swal2-title {
+  color: white !important;
+  font-weight: 50 !important;
+  margin: 0 !important;
+}
+
+
 input {
   display: block;
   padding: 10px 40px;

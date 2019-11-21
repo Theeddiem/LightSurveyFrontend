@@ -21,25 +21,5 @@
   text-align: center;
 }
 
-.swal-copyclipboard {
-  height: 4%;
-  width: auto;
-  font-size: 10px;
-  background-color: #26be84;
-  border-radius: 10px;
-}
 
-.swal-warning {
-  height: 4%;
-  width: auto;
-  font-size: 10px;
-  background-color: #ee467e;
-  border-radius: 10px;
-}
-
-.swal2-title {
-  color: white;
-  font-weight: 100;
-  margin: 0;
-}
 </style>
