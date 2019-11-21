@@ -10,8 +10,6 @@ export async function getSurvey (id) {
         'Content-Type': 'application/json'
       },
     })
-
-    console.log("this response",response);
     
     const json = await response.json()
       
