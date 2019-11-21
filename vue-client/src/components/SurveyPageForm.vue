@@ -1,6 +1,5 @@
 <template>
   <div class='surveyPage-container'>
-    <div class='surveyPage-main-box'>
       <h1 id='surveyPage-survey-question'>{{ question }}</h1>
       <template v-if='reRender'>
         <SingleOption
@@ -23,7 +22,6 @@
       <button id='add-btn'>Add Option</button>
       <button @click='vote' id='submit-option'>Vote</button>
     </div>
-  </div>
 </template>
 
 <script>

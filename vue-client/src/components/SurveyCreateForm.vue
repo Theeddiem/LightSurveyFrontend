@@ -1,21 +1,20 @@
 <template>
   <div class="surveyCreate-container">
-    <div class="surveyCreate-main-box">
-      <input
+       <input
         class="survey-create-group"
         v-model.lazy="question"
         type="text"
         placeholder="Enter Question"
       />
       <OptionInput
-        @something="newValue"
-        v-for="(option, i) in this.$store.state.options"
+        @OnSetOption="setOption"
+        v-for="(option, i) in options"
         v-bind:key="i"
         :index="i"
       ></OptionInput>
       <button class="surveyCreate-main-btn-group" @click="addOption">Add</button>
       <button class="surveyCreate-main-btn-group" @click="submitPoll">Submits</button>
-    </div>
+
   </div>
 </template>
 
@@ -27,17 +26,15 @@ import { postSurvey } from '../databaseManager'
 export default {
   data: function () {
     return {
+      options : ['',''],
       question: ''
     }
   },
 
   methods: {
     async submitPoll () {
-      console.log(this.$store)
-      console.log(this.$store.state.options)
-      console.log(this.question)
 
-      const filterdOptions = this.$store.state.options.filter(
+      const filterdOptions =  this.options.filter(
         word => word !== ''
       )
 
@@ -46,24 +43,25 @@ export default {
         return
       }
 
+     console.log(filterdOptions.length);
+     
       if (filterdOptions.length < 2) {
         IndicatorPopup('Enter at least 2 options', 'warning')
       } else {
-        const survey = new Survey(this.question, this.$store.state.options)
-        console.log(survey)
-        this.$store.state.currentSurvey = survey
-        this.$store.state.title = this.question
+        const survey = new Survey(this.question, filterdOptions)
         await postSurvey(survey)
         this.$router.push(`/survey/${survey.id}`)
       }
     },
 
-    newValue: function (option, index) {
-      this.$store.state.options[index] = option
+    setOption: function (option, index) {
+      // this.$store.state.options[index] = option
+      this.options[index] = option
     },
 
     addOption: function () {
-      this.$store.state.options.push('')
+      // this.$store.state.options.push('')
+      this.options.push('')
     }
   }
 }

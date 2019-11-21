@@ -7,6 +7,7 @@ import SurveyPageForm from './components/SurveyPageForm.vue'
 import NavBar from './components/NavBar.vue'
 import store from './store/'
 import SingleOption from './components/SingleOption'
+import Footer from './components/Footer.vue'
 
 import { routes } from './router/routes'
 
@@ -17,7 +18,7 @@ const router = new VueRouter({
 })
 
 Vue.config.productionTip = false
-
+Vue.component('Footer',Footer)
 Vue.component('NavBar', NavBar)
 Vue.component('SurveyCreateForm', SurveyCreateForm)
 Vue.component('OptionInput', OptionInput)

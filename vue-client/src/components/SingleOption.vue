@@ -69,9 +69,8 @@ export default {
 
 <style>
 .optionSingleDiv {
-  width: 200px;
   display: grid;
-  grid-template-columns: 6fr 1fr;
+  grid-template-columns: 11fr 1fr;
 }
 
 #myProgress {

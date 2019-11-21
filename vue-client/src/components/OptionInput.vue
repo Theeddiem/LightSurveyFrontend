@@ -14,7 +14,7 @@ export default {
 
   methods: {
     getValue() {
-      this.$emit("something", this.value, this.index);
+      this.$emit("OnSetOption", this.value, this.index);
     }
   }
 };

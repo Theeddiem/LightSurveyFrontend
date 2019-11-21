@@ -5,7 +5,7 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    options: ['snuday', 'monday'],
+    options: ['', ''],
     title: '',
     currentSurvey: null,
     voterIndexs: []
