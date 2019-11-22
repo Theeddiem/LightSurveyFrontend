@@ -96,4 +96,23 @@ export default {
 }
 </script>
 
-<style></style>
+<style>
+
+.surveyPage-container {
+  grid-column: 2;
+  padding: 5%;
+  display: grid;
+  background-color: #fff;
+  border-radius: 6px;
+  box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);
+}
+
+
+#surveyPage-survey-question {
+  grid-column: 1/-1;
+  font-size: 25px;
+  font-family: myFirstFont, Helvetica, sans-serif;
+}
+
+
+</style>

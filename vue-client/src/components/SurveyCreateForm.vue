@@ -83,5 +83,17 @@ export default {
 
 <style>
 
+.surveyCreate-container {
+  grid-template-columns: 1fr 1fr;
+  padding: 5%;
+  grid-column: 2;
+  background-color: #fff;
+  border-radius: 6px;
+  box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);
+  display: grid;
+  text-align: center;
+}
+
+
 
 </style>

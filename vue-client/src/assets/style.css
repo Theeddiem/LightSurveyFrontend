@@ -122,17 +122,6 @@ li a:hover {
 /* -----------------------------------------------------------------------------------------------------------------------------------*/
 /* surveyCreate.html */
 
-.surveyCreate-container {
-  grid-template-columns: 1fr 1fr;
-  padding: 5%;
-  grid-column: 2;
-  background-color: #fff;
-  border-radius: 6px;
-  box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);
-  display: grid;
-  text-align: center;
-}
-
 
 /* -----------------------------------------------------------------------------------------------------------------------------------*/
 /* -----------------------------------------------------------------------------------------------------------------------------------*/
@@ -140,10 +129,4 @@ li a:hover {
 /*surveyPage.html */
 
 
-
-#surveyPage-survey-question {
-  grid-column: 1/-1;
-  font-size: 25px;
-  font-family: myFirstFont, Helvetica, sans-serif;
-}
 
