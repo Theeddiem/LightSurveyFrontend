@@ -1,5 +1,5 @@
 const server = `http://localhost:5000/api/surveys`
-const serverTwo = server//  '/api/surveys'
+const serverTwo = '/api/surveys'
 export async function getSurvey (id) {
  
 

@@ -15,21 +15,6 @@
       ></OptionInput>
       <button class="button-group" @click="addOption">Add</button>
       <button class="button-group" @click="submitPoll">Submit</button>
-
-
-        <button
-      type="button"
-      class="btn"
-      @click="showModal"
-    >
-      Open Modal!
-    </button>
-
-    <modal
-      v-show="isModalVisible"
-      @close="closeModal"
-    />
-
   </div>
 
   
@@ -65,7 +50,6 @@ export default {
       }    ,
 
     async submitPoll () {
-  this.$modal.show('hello-world');
       const filterdOptions =  this.options.filter(
         word => word !== ''
       )
@@ -87,12 +71,10 @@ export default {
     },
 
     setOption: function (option, index) {
-      // this.$store.state.options[index] = option
       this.options[index] = option
     },
 
     addOption: function () {
-      // this.$store.state.options.push('')
       this.options.push('')
     }
   }
