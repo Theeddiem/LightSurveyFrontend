@@ -100,7 +100,8 @@ export default {
 
 .surveyPage-container {
   grid-column: 2;
-  padding: 5%;
+  grid-row: 2;
+  padding: 15px;
   display: grid;
   background-color: #fff;
   border-radius: 6px;

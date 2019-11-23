@@ -1,6 +1,5 @@
 <template>
   <div>
-<modals-container/>
     <div class="optionSingleDiv">
        <img @click="votersName" class="votersInfo" src="../assets/peopleIcon.svg"  height="20"/>
       <div id="myProgress">
@@ -52,8 +51,6 @@ export default {
         }
      }
 
-     this.$modal.show('voterNames')
- 
     },
 
     onInputChange() {
