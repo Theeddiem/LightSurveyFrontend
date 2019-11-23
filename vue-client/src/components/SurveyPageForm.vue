@@ -18,8 +18,11 @@
         placeholder='Enter name...'
         autofocus
       />
+      <div class="lowerButtons">
       <button class="button-group">Add Option</button>
       <button class="button-group"  @click='vote' id='submit-option'>Vote</button>
+      </div>
+   
     </div>
 </template>
 
@@ -97,6 +100,11 @@ export default {
 </script>
 
 <style>
+
+.lowerButtons{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
 
 .surveyPage-container {
   grid-column: 2;
