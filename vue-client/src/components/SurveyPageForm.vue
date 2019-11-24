@@ -1,6 +1,6 @@
 <template>
   <div class='surveyPage-container'>
-      <h1 id='surveyPage-survey-question'>{{ question }}</h1>
+             <h1 id='surveyPage-survey-question'>{{ question }}</h1>
       <template v-if='reRender'>
         <SingleOption
           v-for='(option, i) in options'
@@ -18,10 +18,10 @@
         placeholder='Enter name...'
         autofocus
       />
-      <div class="lowerButtons">
+   
       <!-- <button class="button-group">Add Option</button> -->
       <button class="button-group"  @click='vote' id='submit-option'>Vote</button>
-      </div>
+   
    
     </div>
 </template>
@@ -54,6 +54,7 @@ export default {
         id: this.$route.params.id
       }
 
+      
       console.log('indexs', this.$store.state.voterIndexs)
 
       if (await putSurvey(updateSurvey) === 400) {
@@ -92,18 +93,22 @@ export default {
   },
 
   created: async function () {
-    this.loadData()
-    console.log("hi");
-    
+
+    await this.loadData()
+    document.title =  this.question   
   }
 }
 </script>
 
-<style>
+<style scoped>
 
-.lowerButtons{
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+.input-group{
+  grid-column: 2;
+}
+
+.button-group {
+
+  grid-column: 2;
 }
 
 .surveyPage-container {
@@ -111,6 +116,7 @@ export default {
   grid-row: 2;
   padding: 15px;
   display: grid;
+  grid-template-columns: 1fr 2fr 1fr ;
   background-color: #fff;
   border-radius: 6px;
   box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);

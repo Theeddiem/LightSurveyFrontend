@@ -3,15 +3,12 @@ import VueRouter from 'vue-router'
 import App from './App.vue'
 import store from './store/'
 import { routes } from './router/routes'
-import VModal from 'vue-js-modal'
-import Modal from "./components/Model.vue"
 import NavBar from './components/NavBar'
 import Footer from './components/Footer'
 
 
 Vue.component("NavBar",NavBar)
 Vue.component("Footer",Footer)
-Vue.component("Modal",Modal)
 
 // Vue.use(VModal, { dynamic: true, dynamicDefaults: { clickToClose: false } }) // need to unisall npm
 Vue.use(VueRouter)

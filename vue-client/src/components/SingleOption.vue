@@ -1,5 +1,4 @@
 <template>
-  <div>
     <div class="optionSingleDiv">
        <img @click="votersName" class="votersInfo" src="../assets/peopleIcon.svg"  height="20"/>
       <div id="myProgress">
@@ -14,7 +13,7 @@
       </div>
       <input @change="onInputChange" type="checkbox" class="dynamicCheckBox"/>
     </div>
-    </div>
+
 </template>
 
 <script>
@@ -93,6 +92,7 @@ export default {
 <style>
 
 .optionSingleDiv {
+  grid-column: 1/-1;
   width: auto;
   display: grid;
   grid-template-rows: auto;
