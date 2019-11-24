@@ -19,7 +19,7 @@
         autofocus
       />
       <div class="lowerButtons">
-      <button class="button-group">Add Option</button>
+      <!-- <button class="button-group">Add Option</button> -->
       <button class="button-group"  @click='vote' id='submit-option'>Vote</button>
       </div>
    
