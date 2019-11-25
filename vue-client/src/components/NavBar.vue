@@ -17,7 +17,9 @@
 export default {
   methods: {
     goToHomePage() {
-      console.log("homePage");
+
+        this.$router.replace ('/')
+        this.$store.state.currentSurvey = null
     }
   }
 };
