@@ -54,7 +54,19 @@ export default {
         id: this.$route.params.id
       }
 
+        if(this.voterName==="") 
+        {
+           IndicatorPopup('Enter Name first', 'warning') 
+          return
+        }
       
+        console.log("helo",this.$store.state.voterIndexs.length);
+        
+        if(this.$store.state.voterIndexs.length === 0 ) 
+        {
+           IndicatorPopup('Choose an option first', 'warning') 
+          return
+        }
       console.log('indexs', this.$store.state.voterIndexs)
 
       if (await putSurvey(updateSurvey) === 400) {
