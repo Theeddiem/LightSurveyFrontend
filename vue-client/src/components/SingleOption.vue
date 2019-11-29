@@ -6,12 +6,10 @@
       &nbsp;
       {{currentOption.optionName}} &nbsp;
       <div :v-if="Math.random() > 0.5" id="myBar" :style="styleObject">{{styleObject.width}} &nbsp;</div>
-       <p v-if="showModal">{{result}}</p>
+      <p v-if="showModal">{{result}}</p>
     </div>
-    
 
     <input @change="onInputChange" type="checkbox" class="dynamicCheckBox" />
-
   </div>
 </template>
 
@@ -33,6 +31,7 @@ export default {
 
   methods: {
     votersName() {
+      this.result = "";
       this.showModal = !this.showModal;
       const voterNames = this.currentOption.voterNames;
       if (voterNames.length === 1) this.result = `${voterNames[0]}`;
