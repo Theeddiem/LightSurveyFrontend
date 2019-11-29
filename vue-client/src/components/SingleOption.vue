@@ -4,9 +4,11 @@
 
     <div id="myProgress">
       &nbsp;
+      
       {{currentOption.optionName}} &nbsp;
+      
       <div :v-if="Math.random() > 0.5" id="myBar" :style="styleObject">{{styleObject.width}} &nbsp;</div>
-      <p v-if="showModal">{{result}}</p>
+      <p class="bla" v-if="showModal">Voters: {{result}}</p>
     </div>
 
     <input @change="onInputChange" type="checkbox" class="dynamicCheckBox" />
@@ -84,6 +86,12 @@ export default {
 </script>
 
 <style>
+
+.bla{
+  padding: 1px;
+  margin:  1px;
+  font-size: 14px;
+}
 .optionSingleDiv {
   grid-column: 1/-1;
   width: auto;
@@ -98,10 +106,11 @@ export default {
 }
 
 #myProgress {
+
   text-align: center;
   grid-column: 2;
   background-color: #edf9f5;
-  font-size: 14px;
+  font-size: 18px;
   text-align: left;
   margin: 5px 5px 5px 5px;
   border-color: black;
