@@ -1,19 +1,18 @@
 <template>
-    <div class="optionSingleDiv">
-       <img @click="votersName" class="votersInfo" src="../assets/peopleIcon.svg"  height="20"/>
-      <div id="myProgress">
-        &nbsp;
-        {{currentOption.optionName}} &nbsp;
-        <div
-          :v-if="Math.random() > 0.5"
-          id="myBar"
-          :style="styleObject"
-        >{{styleObject.width}} &nbsp;
-        </div>
-      </div>
-      <input @change="onInputChange" type="checkbox" class="dynamicCheckBox"/>
-    </div>
+  <div class="optionSingleDiv">
+    <img @click="votersName" class="votersInfo" src="../assets/peopleIcon.svg" height="20" />
 
+    <div id="myProgress">
+      &nbsp;
+      {{currentOption.optionName}} &nbsp;
+      <div :v-if="Math.random() > 0.5" id="myBar" :style="styleObject">{{styleObject.width}} &nbsp;</div>
+       <p v-if="showModal">{{result}}</p>
+    </div>
+    
+
+    <input @change="onInputChange" type="checkbox" class="dynamicCheckBox" />
+
+  </div>
 </template>
 
 <script>
@@ -25,31 +24,28 @@ export default {
       styleObject: {
         width: "0%"
       },
-      result : "",
+      showModal: false,
+      result: "",
       percentage: 0,
-      checked: false,
+      checked: false
     };
   },
 
   methods: {
-
-    votersName (){
-        const  voterNames = this.currentOption.voterNames
-        if (voterNames.length === 1) this.result = voterNames[0];
-        
-        else{
-        for (let index = 0; index < voterNames.length; index++) 
-        {
+    votersName() {
+      this.showModal = !this.showModal;
+      const voterNames = this.currentOption.voterNames;
+      if (voterNames.length === 1) this.result = `${voterNames[0]}`;
+      else {
+        for (let index = 0; index < voterNames.length; index++) {
           const element = voterNames[index];
-          if (index === voterNames.length - 1)
-            //last index
-            this.result += element + " ";
+          if (index === voterNames.length - 1) this.result += element + " ";
           else {
             this.result += element + ", ";
           }
         }
-     }
-
+      }
+      console.log("this is result ", this.result);
     },
 
     onInputChange() {
@@ -83,23 +79,21 @@ export default {
           refToStyleObject.width = width + "%";
         }
       }
-
     }
   }
 };
 </script>
 
 <style>
-
 .optionSingleDiv {
   grid-column: 1/-1;
   width: auto;
   display: grid;
   grid-template-rows: auto;
-  grid-template-columns: 1fr 15fr 1fr; 
+  grid-template-columns: 1fr 15fr 1fr;
 }
 
-.votersInfo{
+.votersInfo {
   grid-column: 1;
   margin-top: 10px;
 }
@@ -130,7 +124,6 @@ export default {
 }
 
 .dynamicCheckBox {
-
   margin-top: 10px;
 }
 
