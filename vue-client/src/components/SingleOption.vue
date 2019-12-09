@@ -65,19 +65,26 @@ export default {
 
   created: function() {
     {
-      let desiredWidth = this.currentOption.counter * this.eachVote;
+      let desiredWidth = (this.currentOption.counter * this.eachVote).toFixed(2);     
       console.log(this.$store.state.currentSurvey);
-
       var width = 0;
       var refToStyleObject = this.styleObject;
       var id = setInterval(frame, 10);
-      function frame() {
+  
+     function frame() {
         if (width >= desiredWidth) {
           clearInterval(id);
-        } else {
+        } 
+        else {
           width++;
-
           refToStyleObject.width = width + "%";
+
+          if(width>=desiredWidth)
+          {
+            console.log("hi");
+            
+              refToStyleObject.width = desiredWidth + "%";
+          }
         }
       }
     }
