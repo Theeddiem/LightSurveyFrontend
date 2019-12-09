@@ -100,7 +100,7 @@ export default {
         totalVotes += element.counter
       })
 
-      if (totalVotes !== 0) this.eachVote = Math.floor(100 / totalVotes)
+      if (totalVotes !== 0) this.eachVote = (100 / totalVotes)
     }
   },
 
