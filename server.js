@@ -2,11 +2,16 @@ const express = require('express')
 const mongoose = require('mongoose')
 const surveys = require('./routes/surveys')
 const history = require("connect-history-api-fallback");
+require('dotenv').config()
 var cors = require('cors')
 const path = require('path')
 
-const uri = process.env.mongodb || 'mongodb://localhost/surveyApp';
+
+const uri = process.env.mongodb || `mongodb+srv://${process.env.user}:${process.env.pw}@cluster0.gyxex.mongodb.net/testing?retryWrites=true&w=majority`;
 console.log(uri)
+
+
+
 
 mongoose
   .connect(uri, { useNewUrlParser: true })
