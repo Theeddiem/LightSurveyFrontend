@@ -59,7 +59,7 @@ export default {
         return
       }
 
-      if(this.question.length < 3)
+      if(this.question.length <  3)
       {
         IndicatorPopup('The question is too short', 'warning')
         return
