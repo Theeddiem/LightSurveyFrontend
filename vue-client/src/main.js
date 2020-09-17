@@ -6,7 +6,7 @@ import { routes } from "./router/routes";
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
 import Modal from "./components/Model.vue"
-
+import './registerServiceWorker'
 Vue.component("NavBar", NavBar);
 Vue.component("Footer", Footer);
 Vue.component("modal", 

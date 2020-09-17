@@ -15,6 +15,7 @@
       ></OptionInput>
       <button class="button-group" @click="addOption">Add</button>
       <button class="button-group" @click="submitPoll">Submit</button>
+      <button class="add-button" @click="addHomeScreen" >Add to home screen </button>
   </div>
 
   
@@ -70,6 +71,20 @@ export default {
       }
     },
 
+    addHomeScreen: function(){
+        let deferredPrompt;
+ 
+
+      window.addEventListener('beforeinstallprompt', (e) => {
+        // Prevent the mini-infobar from appearing on mobile
+        e.preventDefault();
+        // Stash the event so it can be triggered later.
+        deferredPrompt = e;
+        // Update UI notify the user they can install the PWA
+        showInstallPromotion();
+});
+    },
+
     setOption: function (option, index) {
       this.options[index] = option
     },
@@ -77,6 +92,8 @@ export default {
     addOption: function () {
       this.options.push('')
     }
+
+    
   }
 }
 </script>
