@@ -1,5 +1,5 @@
 const testServer =`http://localhost:5000/api/surveys`
-const serverTwo = process.env.mongodb || testServer
+const serverTwo = process.env.apisurveys || testServer
 export async function getSurvey (id) {
  
 
