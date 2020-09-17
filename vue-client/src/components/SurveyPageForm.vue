@@ -86,10 +86,8 @@ export default {
     }, //
 
     async loadData () {
-      console.log("t1", this.$store.state.currentSurvey);
       
       this.$store.state.currentSurvey = await getSurvey(this.id)
-      console.log("t2", this.$store.state.currentSurvey);
       
        this.options = this.$store.state.currentSurvey.options
        this.question = this.$store.state.currentSurvey.question

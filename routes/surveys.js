@@ -12,7 +12,7 @@ router.post("/", async (req, res) => {
     options: req.body.options
   });
 
-  console.log("this", survey);
+
 
   try {
     await survey.save();

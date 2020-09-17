@@ -59,7 +59,11 @@ export default {
         return
       }
 
-     console.log(filterdOptions.length);
+      if(this.question.length < 3)
+      {
+        IndicatorPopup('The question is too short', 'warning')
+        return
+      }
      
       if (filterdOptions.length < 2) {
         IndicatorPopup('Enter at least 2 options', 'warning')
