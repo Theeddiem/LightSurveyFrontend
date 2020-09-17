@@ -83,8 +83,10 @@ body {
 }
 
 
-.navBar {
-  grid-column: 1/-1;
+.navbar {
+  display: flex;
+  justify-content: space-between;
+
 }
 
 ul {

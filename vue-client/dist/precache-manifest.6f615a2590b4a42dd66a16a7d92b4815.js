@@ -1,7 +1,15 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "297c259de0eff6bb9966",
-    "url": "/css/app.27551bad.css"
+    "revision": "0ff1bc4d14e5c9abcacba7c600d97814",
+    "url": "/aaa.png"
+  },
+  {
+    "revision": "f130a0b70e386170cf6f011c0ca8c4f4",
+    "url": "/bbb.png"
+  },
+  {
+    "revision": "cb572c13a9a016111843",
+    "url": "/css/app.a1305530.css"
   },
   {
     "revision": "5ee0f2d1a1e6e14d8c4d8fa7f18c3326",
@@ -24,23 +32,23 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/img/whatsAppIcon.547cd823.svg"
   },
   {
-    "revision": "4d474787c73e9d9a59dbe5f668a0437a",
+    "revision": "05a54f7d9e1e564321145e5dc3572d1b",
     "url": "/index.html"
   },
   {
-    "revision": "297c259de0eff6bb9966",
-    "url": "/js/app.c0ce972f.js"
+    "revision": "cb572c13a9a016111843",
+    "url": "/js/app.4a93d85b.js"
   },
   {
-    "revision": "9d3a6afea31da128255b",
-    "url": "/js/chunk-vendors.2b3fcf78.js"
+    "revision": "12c17adbf42f901b3c3a",
+    "url": "/js/chunk-vendors.8d491285.js"
   },
   {
-    "revision": "3c2fb072c5a3bde1c78bb601ecbed646",
+    "revision": "fd8bfbcf1525abf6f3cc221274f581e4",
     "url": "/manifest.json"
   },
   {
-    "revision": "b6216d61c03e6ce0c9aea6ca7808f7ca",
+    "revision": "735ab4f94fbcd57074377afca324c813",
     "url": "/robots.txt"
   }
 ]);

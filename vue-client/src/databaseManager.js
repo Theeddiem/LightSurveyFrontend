@@ -1,4 +1,4 @@
-const server = `https://localhost:5000/api/surveys`
+const server = `http://localhost:5000/api/surveys`
 const serverTwo =server// '/api/surveys'
 export async function getSurvey (id) {
  
