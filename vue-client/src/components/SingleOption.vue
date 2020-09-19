@@ -46,7 +46,6 @@ export default {
           }
         }
       }
-      console.log("this is result ", this.result);
     },
 
     onInputChange() {
@@ -80,9 +79,7 @@ export default {
           refToStyleObject.width = width + "%";
 
           if(width>=desiredWidth)
-          {
-            console.log("hi");
-            
+          {          
               refToStyleObject.width = desiredWidth + "%";
           }
         }

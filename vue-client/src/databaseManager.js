@@ -1,6 +1,6 @@
 const testServer =`http://localhost:5000/api/surveys`
-console.log("process.env", process.env.apisurveys)
-const serverTwo = `/api/surveys` || testServer
+const mainServer = `/api/surveys` 
+const serverTwo = testServer
 export async function getSurvey (id) {
  
 

@@ -21,7 +21,6 @@
 </template>
 
 <script>
-import modal from './Model.vue';
 import Survey from '../SurveyClass'
 import IndicatorPopup from '../utilities'
 import Swal from "sweetalert2";
@@ -30,7 +29,7 @@ import OptionInput from './OptionInput.vue'
 
 export default {
 
-    components: {OptionInput,  modal},
+    components: {OptionInput},
 
   data: function () {
     return {
