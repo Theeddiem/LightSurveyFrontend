@@ -5,7 +5,7 @@
     <div id="myProgress">
       &nbsp;
       
-      {{currentOption.optionName}} &nbsp;
+      {{currentOption.name}} &nbsp;
       
       <div :v-if="Math.random() > 0.5" id="myBar" :style="styleObject">{{styleObject.width}} &nbsp;</div>
       <p class="bla" v-if="showModal">Voters: {{result}}</p>
@@ -17,7 +17,7 @@
 
 <script>
 export default {
-  props: ["currentOption", "eachVote", "index"],
+  props: ["currentOption", "eachVote", "index", "id"],
 
   data: function() {
     return {
@@ -35,12 +35,13 @@ export default {
     votersName() {
       this.result = "";
       this.showModal = !this.showModal;
-      const voterNames = this.currentOption.voterNames;
-      if (voterNames.length === 1) this.result = `${voterNames[0]}`;
+      const voters = this.currentOption.voters;
+      console.log("voters:", voters);
+      if (voters.length === 1) this.result = `${voters[0].name}`;
       else {
-        for (let index = 0; index < voterNames.length; index++) {
-          const element = voterNames[index];
-          if (index === voterNames.length - 1) this.result += element + " ";
+        for (let index = 0; index < voters.length; index++) {
+          const element = voters[index].name;
+          if (index === voters.length - 1) this.result += element + " ";
           else {
             this.result += element + ", ";
           }
@@ -49,23 +50,27 @@ export default {
     },
 
     onInputChange() {
-      this.checked = !this.checked;
+       this.checked = !this.checked;
+       const currentOptionId = this.currentOption.id;
+       console.log("this is singleOptionId",currentOptionId);
 
       if (this.checked) {
-        if (!this.$store.state.voterIndexs.includes(this.index))
-          this.$store.state.voterIndexs.push(this.index);
+        if (!this.$store.state.optionsId.includes(currentOptionId))
+             this.$store.state.optionsId.push(currentOptionId);
       } else {
-        this.$store.state.voterIndexs = this.$store.state.voterIndexs.filter(
-          item => item !== this.index
+        this.$store.state.optionsId = this.$store.state.optionsId.filter(
+          item => item !== currentOptionId
         );
       }
+      console.log(this.$store.state.optionsId);
     }
   },
 
   created: function() {
     {
+ 
       let desiredWidth = (this.currentOption.counter * this.eachVote).toFixed(2);     
-      console.log(this.$store.state.currentSurvey);
+      console.log("lalala",this.$store.state.currentSurvey);
       var width = 0;
       var refToStyleObject = this.styleObject;
       var id = setInterval(frame, 10);

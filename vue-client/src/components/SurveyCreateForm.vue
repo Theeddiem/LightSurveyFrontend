@@ -67,9 +67,8 @@ export default {
       if (filterdOptions.length < 2) {
         IndicatorPopup('Enter at least 2 options', 'warning')
       } else {
-        const survey = new Survey(this.question, filterdOptions)
-        await postSurvey(survey)
-        this.$router.push(`/survey/${survey.id}`)
+      const currenySurvey  = await postSurvey(new Survey(this.question, filterdOptions))
+      this.$router.push(`/survey/${currenySurvey.uuid}`)
       }
     },
 

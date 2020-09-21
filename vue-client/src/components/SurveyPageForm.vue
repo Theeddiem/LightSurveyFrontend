@@ -27,7 +27,7 @@
 </template>
 
 <script>
-import { getSurvey, putSurvey } from '../databaseManager'
+import { getSurvey, putSurvey ,voteForOption} from '../databaseManager'
 import IndicatorPopup from '../utilities'
 import SingleOption from './SingleOption'
 
@@ -48,11 +48,12 @@ export default {
 
   methods: {
     async vote () {
-      const updateSurvey = {
-        name: this.voterName,
-        indexs: this.$store.state.voterIndexs,
-        id: this.$route.params.id
-      }
+      // const updateSurvey = {
+      //   name: this.voterName,
+      //   optionsId: this.$store.state.optionsId,
+      //   id: this.$route.params.id
+      // }
+
 
         if(this.voterName==="") 
         {
@@ -60,20 +61,29 @@ export default {
           return
         }
       
-        console.log("helo",this.$store.state.voterIndexs.length);
+        console.log("helo",this.$store.state.optionsId.length);
         
-        if(this.$store.state.voterIndexs.length === 0 ) 
+        if(this.$store.state.optionsId.length === 0 ) 
         {
            IndicatorPopup('Choose an option first', 'warning') 
           return
         }
-      console.log('indexs', this.$store.state.voterIndexs)
-
-      if (await putSurvey(updateSurvey) === 400) {
-        IndicatorPopup('Alredy Voted For that Option', 'warning') 
       
-      } else {
-        this.$store.state.voterIndexs = []
+      const updatedSurvey = this.$store.state.currentSurvey
+      const optionsId = this.$store.state.optionsId
+      console.log("chacha", optionsId);
+      const voter = { name:this.voterName, ipAddress:"7.7.7.1"}
+      const x = await voteForOption(voter,optionsId)
+
+
+
+
+
+      // if (await putSurvey(updateSurvey) === 400) {
+      //   IndicatorPopup('Alredy Voted For that Option', 'warning') 
+      
+      // } else {
+        this.$store.state.optionsId = []
         await this.loadData()
 
         this.reRender = false
@@ -82,12 +92,14 @@ export default {
           // Add the component back in
           this.reRender = true
         })
-      }
+      
     }, //
 
     async loadData () {
       
       this.$store.state.currentSurvey = await getSurvey(this.id)
+      console.log(this.id);
+      console.log("xxx",this.$store.state.currentSurvey);
       
        this.options = this.$store.state.currentSurvey.options
        this.question = this.$store.state.currentSurvey.question
@@ -97,7 +109,7 @@ export default {
       this.$store.state.currentSurvey.options.forEach(element => {
         totalVotes += element.counter
       })
-
+    
       if (totalVotes !== 0) this.eachVote = (100 / totalVotes)
     }
   },
