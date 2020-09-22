@@ -69,8 +69,16 @@ export default {
   created: function() {
     {
  
-      let desiredWidth = (this.currentOption.counter * this.eachVote).toFixed(2);     
-      console.log("lalala",this.$store.state.currentSurvey);
+      console.log("from singleOption", this.eachVote);
+
+      
+      const currentOptionCounter = this.currentOption.voters.length
+     
+
+
+
+      let desiredWidth = (currentOptionCounter * this.eachVote).toFixed(2);     
+      
       var width = 0;
       var refToStyleObject = this.styleObject;
       var id = setInterval(frame, 10);
@@ -89,6 +97,7 @@ export default {
           }
         }
       }
+      
     }
   }
 };

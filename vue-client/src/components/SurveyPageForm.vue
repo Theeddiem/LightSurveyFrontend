@@ -27,7 +27,7 @@
 </template>
 
 <script>
-import { getSurvey, putSurvey ,voteForOption} from '../databaseManager'
+import { getSurvey, putSurvey ,voteForOptions} from '../databaseManager'
 import IndicatorPopup from '../utilities'
 import SingleOption from './SingleOption'
 
@@ -71,9 +71,8 @@ export default {
       
       const updatedSurvey = this.$store.state.currentSurvey
       const optionsId = this.$store.state.optionsId
-      console.log("chacha", optionsId);
       const voter = { name:this.voterName, ipAddress:"7.7.7.1"}
-      const x = await voteForOption(voter,optionsId)
+      const x = await voteForOptions(voter,optionsId)
 
 
 
@@ -98,8 +97,6 @@ export default {
     async loadData () {
       
       this.$store.state.currentSurvey = await getSurvey(this.id)
-      console.log(this.id);
-      console.log("xxx",this.$store.state.currentSurvey);
       
        this.options = this.$store.state.currentSurvey.options
        this.question = this.$store.state.currentSurvey.question
@@ -107,10 +104,16 @@ export default {
       let totalVotes = 0
 
       this.$store.state.currentSurvey.options.forEach(element => {
-        totalVotes += element.counter
+        console.log("voters Lengh for", element.voters.length);
+        totalVotes += element.voters.length
       })
+      console.log("total votes = " +totalVotes);
+
+     
     
-      if (totalVotes !== 0) this.eachVote = (100 / totalVotes)
+      if (totalVotes !== 0) 
+      this.eachVote = (100 / totalVotes)
+
     }
   },
 
