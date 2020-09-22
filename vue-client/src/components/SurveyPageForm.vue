@@ -60,9 +60,7 @@ export default {
            IndicatorPopup('Enter Name first', 'warning') 
           return
         }
-      
-        console.log("helo",this.$store.state.optionsId.length);
-        
+              
         if(this.$store.state.optionsId.length === 0 ) 
         {
            IndicatorPopup('Choose an option first', 'warning') 
@@ -94,23 +92,39 @@ export default {
       
     }, //
 
+    compare(a,b)
+    {
+      console.log(a);
+      console.log();
+        const amountOfVotesforA = a.voters.length
+        console.log(amountOfVotesforA);
+        const amountOfVotesforB = b.voters.length
+        console.log(amountOfVotesforB);
+        let comparison = 0;
+         if (amountOfVotesforA > amountOfVotesforB) {
+          comparison = -1;
+        } else if (amountOfVotesforA < amountOfVotesforB) {
+          comparison = 1;
+        }
+    },
+
     async loadData () {
       
       this.$store.state.currentSurvey = await getSurvey(this.id)
-      
+      console.log("before sort" , this.$store.state.currentSurvey.options);
+      this.$store.state.currentSurvey.options.sort(this.compare)
        this.options = this.$store.state.currentSurvey.options
+      console.log("after sort" , this.$store.state.currentSurvey.options);
        this.question = this.$store.state.currentSurvey.question
+
+
 
       let totalVotes = 0
 
       this.$store.state.currentSurvey.options.forEach(element => {
-        console.log("voters Lengh for", element.voters.length);
         totalVotes += element.voters.length
       })
-      console.log("total votes = " +totalVotes);
 
-     
-    
       if (totalVotes !== 0) 
       this.eachVote = (100 / totalVotes)
 
