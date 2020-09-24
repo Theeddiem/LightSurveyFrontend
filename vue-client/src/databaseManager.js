@@ -1,9 +1,9 @@
-
 const axios = require('axios');
 const dev = `http://localhost:5000`
 
 const SurveysEndPoint = `${dev}/api/surveys`;
 const VotersEndPoint = `${dev}/api/voters`
+const OptionsEndPoint = `${dev}/api/options`
 
 export async function postSurvey(survey) {
   const url = SurveysEndPoint;
@@ -38,16 +38,17 @@ export async function voteForOptions(voter, optionsId) {
 
     try {
       const json = JSON.stringify(voter);
+      console.log("this is voter", voter);
       const res = await axios.post(url, json, {
       headers: {
         // Overwrite Axios's automatically set Content-Type
         Accept: "application/json",
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
       }
     });
     return res.data
     } catch (error) {
-      console.error("Error:", error);
+      return error.response
     }
 }
 

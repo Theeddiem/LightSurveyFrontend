@@ -36,7 +36,6 @@ export default {
       this.result = "";
       this.showModal = !this.showModal;
       const voters = this.currentOption.voters;
-      console.log("voters:", voters);
       if (voters.length === 1) this.result = `${voters[0].name}`;
       else {
         for (let index = 0; index < voters.length; index++) {
@@ -52,8 +51,6 @@ export default {
     onInputChange() {
        this.checked = !this.checked;
        const currentOptionId = this.currentOption.id;
-       console.log("this is singleOptionId",currentOptionId);
-
       if (this.checked) {
         if (!this.$store.state.optionsId.includes(currentOptionId))
              this.$store.state.optionsId.push(currentOptionId);
@@ -62,21 +59,14 @@ export default {
           item => item !== currentOptionId
         );
       }
-      console.log(this.$store.state.optionsId);
     }
   },
 
   created: function() {
     {
- 
-      console.log("from singleOption", this.eachVote);
-
       
       const currentOptionCounter = this.currentOption.voters.length
      
-
-
-
       let desiredWidth = (currentOptionCounter * this.eachVote).toFixed(2);     
       
       var width = 0;

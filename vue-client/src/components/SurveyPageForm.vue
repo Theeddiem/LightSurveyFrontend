@@ -27,7 +27,7 @@
 </template>
 
 <script>
-import { getSurvey, putSurvey ,voteForOptions} from '../databaseManager'
+import { getSurvey, putSurvey ,voteForOptions, getOptions} from '../databaseManager'
 import IndicatorPopup from '../utilities'
 import SingleOption from './SingleOption'
 
@@ -48,11 +48,7 @@ export default {
 
   methods: {
     async vote () {
-      // const updateSurvey = {
-      //   name: this.voterName,
-      //   optionsId: this.$store.state.optionsId,
-      //   id: this.$route.params.id
-      // }
+  
 
 
         if(this.voterName==="") 
@@ -69,17 +65,12 @@ export default {
       
       const updatedSurvey = this.$store.state.currentSurvey
       const optionsId = this.$store.state.optionsId
-      const voter = { name:this.voterName, ipAddress:"7.7.7.1"}
-      const x = await voteForOptions(voter,optionsId)
-
-
-
-
-
-      // if (await putSurvey(updateSurvey) === 400) {
-      //   IndicatorPopup('Alredy Voted For that Option', 'warning') 
+      const voter = { name:this.voterName}
+      const response  = await voteForOptions(voter,optionsId)
+      if (response.status === 400) {
+        IndicatorPopup('Alredy Voted For that Option', 'warning') 
       
-      // } else {
+      } else {
         this.$store.state.optionsId = []
         await this.loadData()
 
@@ -89,39 +80,18 @@ export default {
           // Add the component back in
           this.reRender = true
         })
+      }
       
-    }, //
-
-    compare(a,b)
-    {
-      console.log(a);
-      console.log();
-        const amountOfVotesforA = a.voters.length
-        console.log(amountOfVotesforA);
-        const amountOfVotesforB = b.voters.length
-        console.log(amountOfVotesforB);
-        let comparison = 0;
-         if (amountOfVotesforA > amountOfVotesforB) {
-          comparison = -1;
-        } else if (amountOfVotesforA < amountOfVotesforB) {
-          comparison = 1;
-        }
-    },
+    }, 
 
     async loadData () {
       
       this.$store.state.currentSurvey = await getSurvey(this.id)
-      console.log("before sort" , this.$store.state.currentSurvey.options);
-      this.$store.state.currentSurvey.options.sort(this.compare)
-       this.options = this.$store.state.currentSurvey.options
-      console.log("after sort" , this.$store.state.currentSurvey.options);
-       this.question = this.$store.state.currentSurvey.question
-
-
-
+      this.question =  this.$store.state.currentSurvey.question
+      this.options = this.$store.state.currentSurvey.options
       let totalVotes = 0
 
-      this.$store.state.currentSurvey.options.forEach(element => {
+      this.options.forEach(element => {
         totalVotes += element.voters.length
       })
 
