@@ -1,6 +1,6 @@
 const axios = require('axios');
-// const dev = `http://localhost:5000`
-const dev = ``
+const dev = `http://localhost:5000`
+// const dev = ``
 
 const SurveysEndPoint = `${dev}/api/surveys`;
 const VotersEndPoint = `${dev}/api/voters`
