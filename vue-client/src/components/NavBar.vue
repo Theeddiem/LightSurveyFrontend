@@ -59,7 +59,7 @@ p{
   display: flex;
   grid-column: 1/-1;
   justify-content: space-between;
-  background-color: red;
+  background-color: white;
   font-family: myFirstFont, Arial, Helvetica, sans-serif;
 }
 
