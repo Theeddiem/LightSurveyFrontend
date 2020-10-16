@@ -1,6 +1,6 @@
 {
     "background_color": "#eff0eb",
-    "description": "Create Fast Surveys.",
+    "description": "Create Surveys.",
     "display": "fullscreen",
     "icons": [
       {
@@ -16,7 +16,7 @@
       }
       
     ],
-    "name": "Fast Survey",
-    "short_name": "Fast Survey",
+    "name": "Light Survey",
+    "short_name": "Light Survey",
     "start_url": "./"
   }

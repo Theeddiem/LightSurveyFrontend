@@ -1,37 +1,33 @@
 <template>
-  <ul>
+
     <div class="navbar">
 
       <div class="homePage" @click="goToHomePage">
 
-      <li>
+
         <img
           id="homepageImg"
           src="../assets/iconfinder_poll red_10494.png"
           height="48px"
         />
-      </li>
 
-         <li><a id="homepage" class="active">Home</a></li>
+
+        <p id="homepage" class="active">Home</p>
      
       </div>
 
       <div class="installApp" >
-       <li>
-        <img
-          id="homepageImg"
+        <img 
+          id="installAppImg"
           src="../assets/iconfinder_install.png"
-          height="48px"
         />
-      </li>
 
-       <li><a> Install App</a></li>
+       <p> Install</p>
   
     </div>
 
 
     </div>
-  </ul>
 </template>
 
 <script>
@@ -49,8 +45,38 @@ export default {
 </script>
 
 <style>
+#installAppImg
+{
+  margin-top:3px;
+  height:48px;
+  width:48px
+}
 
+p{
+     float: right;
+}
+.navbar {
+  display: flex;
+  grid-column: 1/-1;
+  justify-content: space-between;
+  background-color: #fff;
+  font-family: myFirstFont, Arial, Helvetica, sans-serif;
+}
 
+.installApp:hover,
+.installApp:active,
+.homePage:hover,
+.homePage:active{
+    background-color:  rgb(238, 251, 230);
+}
+
+/* make it so that in touch devices hover color won't stuck after clicking */
+@media (hover: none) { 
+    .installApp:hover,
+    .installApp:active {
+        background-color:white;
+    }
+}
 </style>
 
 

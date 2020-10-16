@@ -61,7 +61,6 @@ body {
 
 .button-group {
 
-
   background-color: #26be84;
   opacity: 0.9;
   color: white;
@@ -80,39 +79,6 @@ body {
 .button-group:hover,
 .button-group:active {
   background-color: #1aac74;
-}
-
-
-.navbar {
-  display: flex;
-  justify-content: space-between;
-
-}
-
-ul {
-  grid-column: 1/-1;
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  background-color: #fff;
-  font-family: myFirstFont, Arial, Helvetica, sans-serif;
-}
-
-li {
-  float: left;
-}
-
-li a {
-  display: block;
-  color: rgb(0, 0, 0);
-  text-align: left;
-  padding: 15px 8px;
-  text-decoration: none;
-}
-
-li a:hover {
-  background-color: rgb(238, 251, 230);
 }
 
 
