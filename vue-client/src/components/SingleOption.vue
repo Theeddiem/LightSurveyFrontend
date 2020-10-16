@@ -108,7 +108,9 @@ export default {
 .votersImg {
   grid-column: 1;
   margin-top: 10px;
+  cursor: pointer;
 }
+
 
 .myProgress {
   width: 100%;
@@ -135,6 +137,7 @@ export default {
 
 .dynamicCheckBox {
   margin-top: 15px;
+  cursor: pointer;
 }
 
 .dynamicCheckBox:before {
