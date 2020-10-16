@@ -1,7 +1,9 @@
 const axios = require('axios');
-const dev = `http://localhost:5000`
-//const dev = ``
-
+let dev = ``
+if(window.location.href.includes('localhost:8081'))
+{
+  dev = `http://localhost:5000`
+}
 const SurveysEndPoint = `${dev}/api/surveys`;
 const VotersEndPoint = `${dev}/api/voters`
 const OptionsEndPoint = `${dev}/api/options`
