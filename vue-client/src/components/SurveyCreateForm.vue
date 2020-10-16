@@ -53,6 +53,7 @@ export default {
         word => word !== ''
       )
 
+      this.question = this.question.trim()
       if (this.question === '') {
         IndicatorPopup('Enter question first', 'warning')
         return
@@ -88,15 +89,15 @@ export default {
 <style>
 
 .surveyCreate-container {
-  grid-template-columns: 1fr 1fr;
   padding: 15px;
   grid-column: 2;
   grid-row: 2;
   background-color: #fff;
+  display: flex;
+  flex-direction: column;
   border-radius: 6px;
   box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);
-  display: grid;
-  text-align: center;
+  max-width: 500px;
 }
 
 

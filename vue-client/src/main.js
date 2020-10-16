@@ -6,10 +6,15 @@ import { routes } from "./router/routes";
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
 import './registerServiceWorker'
+import Meta from 'vue-meta';
+
+
 Vue.component("NavBar", NavBar);
 Vue.component("Footer", Footer);
 
+
 Vue.use(VueRouter);
+Vue.use(Meta);
 
 const router = new VueRouter({
   routes: routes,

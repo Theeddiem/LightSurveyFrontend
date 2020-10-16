@@ -1,14 +1,14 @@
 <template>
   <div class="optionSingleDiv">
-    <img @click="votersName" class="votersInfo" src="../assets/peopleIcon.svg" height="20" />
+    <img @click="votersName" class="votersImg" src="../assets/peopleIcon.svg" height="20" />
 
-    <div id="myProgress">
+    <div class="myProgress">
       &nbsp;
       
       {{currentOption.name}} &nbsp;
       
-      <div :v-if="Math.random() > 0.5" id="myBar" :style="styleObject">{{styleObject.width}} &nbsp;</div>
-      <p class="bla" v-if="showModal">Voters: {{result}}</p>
+      <div :v-if="Math.random() > 0.5" class="myBar" :style="styleObject">{{styleObject.width}} &nbsp;</div>
+      <p class="voters" v-if="showModal">Voters: {{result}}</p>
     </div>
 
     <input @change="onInputChange" type="checkbox" class="dynamicCheckBox" />
@@ -95,39 +95,33 @@ export default {
 
 <style>
 
-.bla{
+.voters{
   padding: 1px;
   margin:  1px;
   font-size: 14px;
 }
-.optionSingleDiv {
-  grid-column: 1/-1;
-  width: auto;
-  display: grid;
-  grid-template-rows: auto;
-  grid-template-columns: 1fr 15fr 1fr;
-}
 
-.votersInfo {
+.optionSingleDiv {
+  display: flex;
+  flex-direction: row; 
+}
+.votersImg {
   grid-column: 1;
   margin-top: 10px;
 }
 
-#myProgress {
-
-  text-align: center;
-  grid-column: 2;
+.myProgress {
+  width: 100%;
   background-color: #edf9f5;
   font-size: 18px;
   text-align: left;
-  margin: 5px 5px 5px 5px;
   border-color: black;
+  margin: 5px 5px 5px 5px;
   border-width: 1px;
   border-style: solid;
 }
 
-#myBar {
-  height: 15px;
+.myBar {
   font-size: 12px;
   font-style: italic;
   background-color: #48ca98;
@@ -140,7 +134,7 @@ export default {
 }
 
 .dynamicCheckBox {
-  margin-top: 10px;
+  margin-top: 15px;
 }
 
 .dynamicCheckBox:before {
@@ -164,7 +158,6 @@ export default {
   -webkit-transform: rotate(45deg);
   -ms-transform: rotate(45deg);
   transform: rotate(45deg);
-
   margin-left: 5px;
 }
 </style>

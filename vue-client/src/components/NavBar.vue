@@ -12,7 +12,7 @@
         />
 
 
-        <p id="homepage" class="active">Home</p>
+        <p class="imgTitle">Home</p>
      
       </div>
 
@@ -22,7 +22,7 @@
           src="../assets/iconfinder_install.png"
         />
 
-       <p> Install</p>
+       <p class="imgTitle"> Install</p>
   
     </div>
 
@@ -52,10 +52,11 @@ export default {
   width:48px
 }
 
-p{
+.imgTitle{
      float: right;
 }
 .navbar {
+  width: 100%;
   display: flex;
   grid-column: 1/-1;
   justify-content: space-between;
@@ -67,13 +68,16 @@ p{
 .installApp:active,
 .homePage:hover,
 .homePage:active{
-    background-color:  rgb(238, 251, 230);
+    background-color:  rgb(230, 251, 236);
+    cursor: pointer;
 }
 
 /* make it so that in touch devices hover color won't stuck after clicking */
 @media (hover: none) { 
     .installApp:hover,
-    .installApp:active {
+    .installApp:active,
+    .homePage:hover,
+    .homePage:active{ 
         background-color:white;
     }
 }

@@ -33,6 +33,7 @@ import SingleOption from './SingleOption'
 
 export default {
 
+
   components:{SingleOption},
 
   data: function () {
@@ -46,7 +47,30 @@ export default {
     }
   },
 
+  metaInfo() {
+    return {
+       title: this.question,
+      meta: [
+          // Twitter Card
+          {name:'title', content:"hello"},
+          {name: 'twitter:card', content: 'summary'},
+          {name: 'twitter:title', content: 'Vue Social Cards Example'},
+          {name: 'twitter:description', content: 'Vue sample site showing off Twitter and Facebook Cards.'},
+          // image must be an absolute path
+          // Facebook OpenGraph
+          {property: 'og:title', content: 'Vue Social Cards Example'},
+          {property: 'og:site_name', content: 'Vue Example'},
+          {property: 'og:type', content: 'website'},
+          {property: 'og:description', content: 'Vue sample site showing off Twitter and Facebook Cards.'}
+      ]
+    }
+  },
+
+
+
+
   methods: {
+    
     async vote () {
   
 
@@ -104,36 +128,25 @@ export default {
   created: async function () {
 
     await this.loadData()
-    document.title =  this.question   
+     //document.title =  this.question   
   }
 }
 </script>
 
 <style scoped>
 
-.input-group{
-  grid-column: 2;
-}
-
-.button-group {
-
-  grid-column: 2;
-}
-
 .surveyPage-container {
   grid-column: 2;
   grid-row: 2;
   padding: 15px;
-  display: grid;
-  grid-template-columns: 1fr 2fr 1fr ;
+  display: flex;
+  flex-direction: column;
   background-color: #fff;
   border-radius: 6px;
   box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);
 }
 
-
 #surveyPage-survey-question {
-  grid-column: 1/-1;
   font-size: 25px;
   font-family: myFirstFont, Helvetica, sans-serif;
 }
