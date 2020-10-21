@@ -65,12 +65,13 @@ export default {
     }
   this.socket = new SockJS(`${dev}/api/survey`);
       this.stompClient = Stomp.over(this.socket);
+      this.stompClient.debug = () => {}; // for debug purpouse remove this row
       this.stompClient.connect(
         {},
         frame => {
           this.connected = true;
           this.stompClient.subscribe(`/topic/surveys/${this.id}`, tick => {
-          this.gaga(tick)
+          this.updateVoters(tick)
           });
         },
         error => {
@@ -80,10 +81,9 @@ export default {
       );
    },
 
-    gaga(survey){
+    updateVoters(survey){
       if(this.dataFromSocket)
       {
-        console.log("inside update");
       this.$store.state.currentSurvey = JSON.parse(survey.body)
       this.question =  this.$store.state.currentSurvey.question
       this.options = this.$store.state.currentSurvey.options      
@@ -160,7 +160,6 @@ export default {
   },
 
   created: async function () {
-     
      await this.loadData()
      this.connect();
      document.title =  this.question   

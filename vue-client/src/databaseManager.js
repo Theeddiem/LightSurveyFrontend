@@ -1,7 +1,6 @@
 const axios = require("axios");
 let dev = ``;
 if (window.location.href.includes("localhost:80")) {
-  console.log("yeah");
   dev = `http://localhost:5000`;
 }
 const SurveysEndPoint = `${dev}/api/surveys`;
@@ -40,7 +39,6 @@ export async function voteForOptions(voter, optionsId) {
 
   try {
     const json = JSON.stringify(voter);
-    console.log("this is voter", voter);
     const res = await axios.post(url, json, {
       headers: {
         // Overwrite Axios's automatically set Content-Type
@@ -55,8 +53,6 @@ export async function voteForOptions(voter, optionsId) {
 }
 
 export async function putSurvey(survey) {
-  console.log("update method", survey);
-
   const url = `${SurveysEndPoint}/${survey.id}`;
 
   try {
