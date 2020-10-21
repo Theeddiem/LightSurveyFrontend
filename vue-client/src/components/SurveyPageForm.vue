@@ -22,7 +22,6 @@
       <!-- <button class="button-group">Add Option</button> -->
       <button class="button-group"  @click='vote' id='submit-option'>Vote</button>
    
-   
     </div>
 </template>
 
@@ -30,11 +29,12 @@
 import { getSurvey, putSurvey ,voteForOptions, getOptions} from '../databaseManager'
 import IndicatorPopup from '../utilities'
 import SingleOption from './SingleOption'
+import SockJS from "sockjs-client";
+import Stomp from "webstomp-client";
 
 export default {
 
-
-  components:{SingleOption},
+ components:{SingleOption},
 
   data: function () {
     return {
@@ -43,39 +43,73 @@ export default {
       id: this.$route.params.id,
       options: null,
       question :"",
-      voterName: ''
+      voterName: '',
+      connected: false,
+      dataFromSocket: true,
     }
   },
-
-  metaInfo() {
-    return {
-       title: this.question,
-      meta: [
-          // Twitter Card
-          {name:'title', content:"hello"},
-          {name: 'twitter:card', content: 'summary'},
-          {name: 'twitter:title', content: 'Vue Social Cards Example'},
-          {name: 'twitter:description', content: 'Vue sample site showing off Twitter and Facebook Cards.'},
-          // image must be an absolute path
-          // Facebook OpenGraph
-          {property: 'og:title', content: 'Vue Social Cards Example'},
-          {property: 'og:site_name', content: 'Vue Example'},
-          {property: 'og:type', content: 'website'},
-          {property: 'og:description', content: 'Vue sample site showing off Twitter and Facebook Cards.'}
-      ]
-    }
-  },
-
-
-
 
   methods: {
+
+   async send() {
+      if (this.stompClient && this.stompClient.connected) {
+        this.stompClient.send(`/app/survey/${this.id}`,{} , {});
+      }
+    },
+
     
+  connect() { 
+    let dev = ``;
+    if (window.location.href.includes("localhost:80")) {
+      dev = `http://localhost:5000`;
+    }
+  this.socket = new SockJS(`${dev}/api/survey`);
+      this.stompClient = Stomp.over(this.socket);
+      this.stompClient.connect(
+        {},
+        frame => {
+          this.connected = true;
+          this.stompClient.subscribe(`/topic/surveys/${this.id}`, tick => {
+          this.gaga(tick)
+          });
+        },
+        error => {
+          console.log(error);
+          this.connected = false;
+        }
+      );
+   },
+
+    gaga(survey){
+      if(this.dataFromSocket)
+      {
+        console.log("inside update");
+      this.$store.state.currentSurvey = JSON.parse(survey.body)
+      this.question =  this.$store.state.currentSurvey.question
+      this.options = this.$store.state.currentSurvey.options      
+      let totalVotes = 0
+
+      this.options.forEach(element => {
+        totalVotes += element.voters.length
+      })
+
+
+      if (totalVotes !== 0) 
+      this.eachVote = (100 / totalVotes)
+
+          this.reRender = false
+
+        this.$nextTick(() => {
+          // Add the component back in
+          this.reRender = true
+        })
+      }
+         this.dataFromSocket = true
+      
+    },
+   
     async vote () {
-  
-
-
-        if(this.voterName==="") 
+       if(this.voterName==="") 
         {
            IndicatorPopup('Enter Name first', 'warning') 
           return
@@ -97,6 +131,8 @@ export default {
       } else {
         this.$store.state.optionsId = []
         await this.loadData()
+        this.dataFromSocket = false
+        await this.send();
 
         this.reRender = false
 
@@ -107,9 +143,7 @@ export default {
       }
       
     }, 
-
-    async loadData () {
-      
+    async loadData () {   
       this.$store.state.currentSurvey = await getSurvey(this.id)
       this.question =  this.$store.state.currentSurvey.question
       this.options = this.$store.state.currentSurvey.options
@@ -126,10 +160,12 @@ export default {
   },
 
   created: async function () {
+     
+     await this.loadData()
+     this.connect();
+     document.title =  this.question   
+  },
 
-    await this.loadData()
-     //document.title =  this.question   
-  }
 }
 </script>
 
