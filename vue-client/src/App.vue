@@ -32,6 +32,7 @@ export default {
   display: grid;
   grid-gap: 20px;
   grid-template-columns: 1fr 2fr 1fr;
+  grid-template-rows: auto 1fr auto;
   text-align: center;
   justify-items: center;
 

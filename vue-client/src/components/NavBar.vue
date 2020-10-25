@@ -6,8 +6,6 @@
         <img
           class="navBarIcons"
           src="../assets/pie-chart_icon.svg"
-          height="48px"
-          width="48px"
         />
         <p class="imgTitle">Home</p>
       </div>
@@ -47,10 +45,10 @@ export default {
 }
 
 .navBarIcons{
-  margin-top: 2px;
-  margin-left: 2px;
-  height:48px;
-  width:48px
+  margin-top: 3px;
+  margin-left: 3px;
+  height:42px;
+  width:42px
 }
 
 .imgTitle{
