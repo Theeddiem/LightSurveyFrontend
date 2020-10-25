@@ -21,6 +21,7 @@
    
       <!-- <button class="button-group">Add Option</button> -->
       <button class="button-group"  @click='vote' id='submit-option'>Vote</button>
+      <pulse-loader :loading="loading" style="margin-top:10px"></pulse-loader>
    
     </div>
 </template>
@@ -31,10 +32,11 @@ import IndicatorPopup from '../utilities'
 import SingleOption from './SingleOption'
 import SockJS from "sockjs-client";
 import Stomp from "webstomp-client";
+import PulseLoader from 'vue-spinner/src/PulseLoader.vue'
 
 export default {
 
- components:{SingleOption},
+ components:{SingleOption,PulseLoader},
 
   data: function () {
     return {
@@ -46,6 +48,7 @@ export default {
       voterName: '',
       connected: false,
       dataFromSocket: true,
+      loading : false,
     }
   },
 
@@ -132,11 +135,12 @@ export default {
         IndicatorPopup('Alredy Voted For that Option', 'warning') 
       
       } else {
+        this.loading = true
         this.$store.state.optionsId = []
         await this.loadData()
         this.dataFromSocket = false
         await this.send();
-
+         this.loading = false
         this.reRender = false
 
         this.$nextTick(() => {

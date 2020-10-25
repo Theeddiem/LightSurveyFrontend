@@ -15,6 +15,7 @@
       ></OptionInput>
       <button class="button-group" @click="addOption">Add</button>
       <button class="button-group" @click="submitPoll">Submit</button>
+     <pulse-loader :loading="loading" style="margin-top:10px"></pulse-loader>
   </div>
 
   
@@ -26,15 +27,17 @@ import IndicatorPopup from '../utilities'
 import Swal from "sweetalert2";
 import { postSurvey } from '../databaseManager'
 import OptionInput from './OptionInput.vue'
+import PulseLoader from 'vue-spinner/src/PulseLoader.vue'
 
 export default {
 
-    components: {OptionInput},
+    components: {OptionInput,  PulseLoader},
 
   data: function () {
     return {
       options : ['',''],
       question: '',
+      loading: false,
     }
   },
 
@@ -60,7 +63,9 @@ export default {
       if (filterdOptions.length < 2) {
         IndicatorPopup('Enter at least 2 options', 'warning')
       } else {
+      this.loading = true
       const currenySurvey  = await postSurvey(new Survey(this.question, filterdOptions))
+       this.loading = false
       this.$router.push(`/survey/${currenySurvey.uuid}`)
       }
     },
