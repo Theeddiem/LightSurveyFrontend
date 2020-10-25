@@ -1,7 +1,7 @@
 <template>
   <div class="footer-container">
-        <img @click="whatsAppLink" id="whatsApp-share" class="shareIcon" src="../assets/whatsAppIcon.svg" height="35"/>
-        <img @click="copyLink" id="copyLink-share" class="shareIcon" src="../assets/copyLinkIcon.svg" height="30"/>
+        <img @click="whatsAppLink" id="whatsApp-share" class="shareIcon" src="../assets/whatsApp_icon.svg" height="35"/>
+        <img @click="copyLink" id="copyLink-share" class="shareIcon" src="../assets/copyLink_icon.svg" height="30"/>
 </div>  
 </template>
 

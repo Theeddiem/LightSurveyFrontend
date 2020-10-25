@@ -1,16 +1,16 @@
 {
-    "background_color": "#eff0eb",
+    "cackground_color": "#eff0eb",
     "description": "Create Surveys.",
     "display": "fullscreen",
     "icons": [
       {
-        "src": "aaa.png",
+        "src": "../img/icons/android-chrome-512x512.png",
         "sizes": "512x512",
         "type": "image/png"
       },
 
       {
-        "src": "bbb.png",
+        "src": "../img/icons/android-chrome-192x192.png",
         "sizes": "192x192",
         "type": "image/png"
       }

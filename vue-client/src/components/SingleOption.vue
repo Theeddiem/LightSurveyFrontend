@@ -1,6 +1,6 @@
 <template>
   <div class="optionSingleDiv">
-    <img @click="votersName" class="votersImg" src="../assets/peopleIcon.svg" height="20" />
+    <img @click="votersName" class="votersImg" src="../assets/voters_icon.svg" height="20" />
 
     <div class="myProgress">
       

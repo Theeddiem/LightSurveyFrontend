@@ -3,31 +3,27 @@
     <div class="navbar">
 
       <div class="homePage" @click="goToHomePage">
-
-
         <img
-          id="homepageImg"
-          src="../assets/iconfinder_poll red_10494.png"
+          class="navBarIcons"
+          src="../assets/pie-chart_icon.svg"
           height="48px"
+          width="48px"
         />
-
-
         <p class="imgTitle">Home</p>
-     
       </div>
+
+
 
       <div class="installApp" >
         <img 
-          id="installAppImg"
-          src="../assets/iconfinder_install.png"
+          class="navBarIcons"
+          src="../assets/install_icon.svg"
         />
-
        <p class="imgTitle"> Install</p>
-  
     </div>
 
-
     </div>
+    
 </template>
 
 <script>
@@ -50,16 +46,16 @@ export default {
   margin-right: 5px;
 }
 
-
-#installAppImg
-{
-  margin-top:3px;
+.navBarIcons{
+  margin-top: 2px;
+  margin-left: 2px;
   height:48px;
   width:48px
 }
 
 .imgTitle{
      float: right;
+     margin-left: 5px;
 }
 .navbar {
   width: 100%;
