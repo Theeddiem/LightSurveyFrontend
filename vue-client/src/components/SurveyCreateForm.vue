@@ -35,19 +35,11 @@ export default {
     return {
       options : ['',''],
       question: '',
-          isModalVisible: false,
     }
   },
 
   methods: {
  
-      showModal() {
-        this.isModalVisible = true;
-      },
-      closeModal() {
-        this.isModalVisible = false;
-      }    ,
-
     async submitPoll () {
       const filterdOptions =  this.options.filter(
         word => word !== ''
@@ -74,14 +66,13 @@ export default {
     },
 
     setOption: function (option, index) {
-      this.options[index] = option
+      if(option.trim()!='')
+        this.options[index] = option
     },
 
     addOption: function () {
       this.options.push('')
     }
-
-    
   }
 }
 </script>

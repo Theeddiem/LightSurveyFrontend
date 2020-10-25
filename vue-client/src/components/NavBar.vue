@@ -45,6 +45,12 @@ export default {
 </script>
 
 <style>
+
+.installApp{
+  margin-right: 5px;
+}
+
+
 #installAppImg
 {
   margin-top:3px;

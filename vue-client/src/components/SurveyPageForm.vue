@@ -109,7 +109,10 @@ export default {
     },
    
     async vote () {
-       if(this.voterName==="") 
+        this.voterName = this.voterName.trim()
+
+
+       if(this.voterName==='') 
         {
            IndicatorPopup('Enter Name first', 'warning') 
           return

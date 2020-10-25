@@ -53,6 +53,13 @@ export default {
 </script>
 
 <style>
+
+.footer-container{
+  grid-column: 2;
+  grid-row: 3;
+}
+
+
 .shareIcon {
   margin-left: 10px;
 }

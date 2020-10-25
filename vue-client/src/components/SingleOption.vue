@@ -3,12 +3,11 @@
     <img @click="votersName" class="votersImg" src="../assets/peopleIcon.svg" height="20" />
 
     <div class="myProgress">
-      &nbsp;
       
-      {{currentOption.name}} &nbsp;
+      {{currentOption.name}} 
       
-      <div :v-if="Math.random() > 0.5" class="myBar" :style="styleObject">{{styleObject.width}} &nbsp;</div>
-      <p class="voters" v-if="showModal">Voters: {{result}}</p>
+      <div class="myBar" :style="styleObject">{{styleObject.width}}</div>
+      <p class="voters" v-if="showModal">Voters: {{votersNameString}}</p>
     </div>
 
     <input @change="onInputChange" type="checkbox" class="dynamicCheckBox" />
@@ -25,24 +24,25 @@ export default {
         width: "0%"
       },
       showModal: false,
-      result: "",
-      percentage: 0,
+      votersNameString: "",
       checked: false
     };
   },
 
   methods: {
     votersName() {
-      this.result = "";
+      this.votersNameString = "";
       this.showModal = !this.showModal;
       const voters = this.currentOption.voters;
-      if (voters.length === 1) this.result = `${voters[0].name}`;
+      if (voters.length === 1) // only one voter doesn't need a comma after him
+      this.votersNameString = `${voters[0].name}`;
       else {
         for (let index = 0; index < voters.length; index++) {
           const element = voters[index].name;
-          if (index === voters.length - 1) this.result += element + " ";
+          if (index === voters.length - 1) // last voter doesn't need a comma after him
+           this.votersNameString += element + " ";
           else {
-            this.result += element + ", ";
+            this.votersNameString += element + ", ";
           }
         }
       }
@@ -107,7 +107,7 @@ export default {
 }
 .votersImg {
   grid-column: 1;
-  margin-top: 10px;
+  margin-top: 12px;
   cursor: pointer;
 }
 
