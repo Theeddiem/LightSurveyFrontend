@@ -1,13 +1,19 @@
 <template>
   <div class="optionSingleDiv">
-    <img @click="votersName" class="votersImg" src="../assets/voters_icon.svg" height="20" />
+    <img
+      @click="votersName"
+      class="votersImg"
+      src="../assets/voters_icon.svg"
+      height="20"
+    />
 
-    <div class="myProgress">
-      
-      {{currentOption.name}} 
-      
-      <div class="myBar" :style="styleObject">{{styleObject.width}}</div>
-      <p class="voters" v-if="showModal">Voters: {{votersNameString}}</p>
+    <div dir="auto" class="myProgress">
+      {{ currentOption.name }}
+
+      <div class="myBar" :style="styleObject">{{ styleObject.width }}</div>
+      <p dir="auto" class="voters" v-if="showModal">
+        Voters: {{ votersNameString }}
+      </p>
     </div>
 
     <input @change="onInputChange" type="checkbox" class="dynamicCheckBox" />
@@ -34,13 +40,15 @@ export default {
       this.votersNameString = "";
       this.showModal = !this.showModal;
       const voters = this.currentOption.voters;
-      if (voters.length === 1) // only one voter doesn't need a comma after him
-      this.votersNameString = `${voters[0].name}`;
+      if (voters.length === 1)
+        // only one voter doesn't need a comma after him
+        this.votersNameString = `${voters[0].name}`;
       else {
         for (let index = 0; index < voters.length; index++) {
           const element = voters[index].name;
-          if (index === voters.length - 1) // last voter doesn't need a comma after him
-           this.votersNameString += element + " ";
+          if (index === voters.length - 1)
+            // last voter doesn't need a comma after him
+            this.votersNameString += element + " ";
           else {
             this.votersNameString += element + ", ";
           }
@@ -49,11 +57,11 @@ export default {
     },
 
     onInputChange() {
-       this.checked = !this.checked;
-       const currentOptionId = this.currentOption.id;
+      this.checked = !this.checked;
+      const currentOptionId = this.currentOption.id;
       if (this.checked) {
         if (!this.$store.state.optionsId.includes(currentOptionId))
-             this.$store.state.optionsId.push(currentOptionId);
+          this.$store.state.optionsId.push(currentOptionId);
       } else {
         this.$store.state.optionsId = this.$store.state.optionsId.filter(
           item => item !== currentOptionId
@@ -64,53 +72,47 @@ export default {
 
   created: function() {
     {
-      
-      const currentOptionCounter = this.currentOption.voters.length
-     
-      let desiredWidth = (currentOptionCounter * this.eachVote).toFixed(2);     
-      
+      const currentOptionCounter = this.currentOption.voters.length;
+
+      let desiredWidth = (currentOptionCounter * this.eachVote).toFixed(2);
+
       var width = 0;
       var refToStyleObject = this.styleObject;
       var id = setInterval(frame, 10);
-  
-     function frame() {
+
+      function frame() {
         if (width >= desiredWidth) {
           clearInterval(id);
-        } 
-        else {
+        } else {
           width++;
           refToStyleObject.width = width + "%";
 
-          if(width>=desiredWidth)
-          {          
-              refToStyleObject.width = desiredWidth + "%";
+          if (width >= desiredWidth) {
+            refToStyleObject.width = desiredWidth + "%";
           }
         }
       }
-      
     }
   }
 };
 </script>
 
 <style>
-
-.voters{
+.voters {
   padding: 1px;
-  margin:  1px;
+  margin: 1px;
   font-size: 14px;
 }
 
 .optionSingleDiv {
   display: flex;
-  flex-direction: row; 
+  flex-direction: row;
 }
 .votersImg {
   grid-column: 1;
   margin-top: 12px;
   cursor: pointer;
 }
-
 
 .myProgress {
   width: 100%;

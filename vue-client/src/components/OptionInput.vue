@@ -1,5 +1,11 @@
 <template>
-  <input @change="getValue" v-model.lazy="value" type="text" placeholder="Add Option..." />
+  <input
+    dir="auto"
+    @change="getValue"
+    v-model.lazy="value"
+    type="text"
+    placeholder="Add Option..."
+  />
 </template>
 
 <script>
