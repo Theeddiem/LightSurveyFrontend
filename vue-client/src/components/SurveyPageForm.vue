@@ -1,6 +1,6 @@
 <template>
   <div class="surveyPage-container">
-    <h1 dir="rtl" id="surveyPage-survey-question">{{ question }}</h1>
+    <h1 dir="auto" id="surveyPage-survey-question">{{ question }}</h1>
     <template v-if="reRender">
       <SingleOption
         v-for="(option, i) in options"
